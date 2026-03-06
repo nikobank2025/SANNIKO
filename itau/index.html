@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Información Bancaria</title>
-  <style>
-    body { font-family: sans-serif; padding: 2em; background: #f9f9f9; }
-    .container { background: white; padding: 2em; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    pre { background: #eee; padding: 1em; border-radius: 5px; white-space: pre-wrap; word-wrap: break-word; }
-    button { margin-top: 1em; padding: 0.5em 1em; font-size: 1em; }
-  </style>
+<meta charset="UTF-8">
+<title>Copiar Información</title>
 </head>
+
 <body>
-  <div class="container">
-    <h2>Información Bancaria</h2>
-    <pre id="bankInfo">BANCO: ITAU
+
+<h3>Copiando información bancaria...</h3>
+<p id="msg"></p>
+
+<script>
+
+const bankInfo = `BANCO: ITAU
 COM NIKO SPA
 RUT: 77860543-0
 CUENTA CORRIENTE: 228168040
-Nikospa8888@gmail.com</pre>
-    <button onclick="copyText()">📋 Copiar Información</button>
-    <p id="msg" style="color: green;"></p>
-  </div>
+Nikospa8888@gmail.com`;
+
+navigator.clipboard.writeText(bankInfo).then(()=>{
+ document.getElementById("msg").innerText="✅ Información copiada automáticamente";
+}).catch(()=>{
+ document.getElementById("msg").innerText="❌ No se pudo copiar";
+});
+
+</script>
+
+</body>
+</html>
